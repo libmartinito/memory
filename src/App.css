@@ -139,6 +139,6 @@
   .modal__content {
     margin: 30% auto;
     width: 80vw;
-    height: 50vh;
+    height:fit-content;
   }
 }
