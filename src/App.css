@@ -65,7 +65,7 @@
   cursor: pointer;
 }
 
-.end-modal {
+.modal {
   position: fixed;
   z-index: 1;
   left: 0;
@@ -74,7 +74,7 @@
   width: 100%;
 }
 
-.end-modal__content {
+.modal__content {
   margin: 10% auto;
   width: 400px;
   height: 360px;
@@ -88,21 +88,57 @@
   color: var(--stone);
 }
 
-.end-modal__body-one {
+.modal__body-one {
   padding-top: 1rem;
 }
 
-.end-modal__body-two {
+.modal__body-two {
   font-size: 5rem;
 }
 
-.end-modal__close-wrapper {
+.modal__close-wrapper {
   display: flex;
   width: 100%;
   justify-content: flex-end;
 }
 
-.end-modal__close {
+.modal__close {
   font-weight: 700;
   cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    min-height: 100vh;
+    width: 100vw;
+  }
+
+  .header,
+  .body {
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .header {
+    position: fixed;
+    z-index: 1;
+    background-color: var(--stone);
+    min-height: 10vh;
+  }
+
+  .body {
+    height:fit-content;
+    padding-top: 8rem;
+    padding-bottom: 3rem;
+  }
+
+  .card {
+    height: 13.5vh;
+  }
+
+  .modal__content {
+    margin: 30% auto;
+    width: 80vw;
+    height: 50vh;
+  }
 }

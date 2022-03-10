@@ -42,14 +42,14 @@ const Body = ({ images, handleClick }) => {
 const EndModal = ({ hideModal, bestScore, isFinished }) => {
   if(isFinished) {
     return(
-      <div className = 'end-modal'>
-        <div className = 'end-modal__content'>
-          <div className = 'end-modal__close-wrapper'>
-            <div className = 'end-modal__close' onClick = {hideModal}>X</div>
+      <div className = 'modal'>
+        <div className = 'modal__content'>
+          <div className = 'modal__close-wrapper'>
+            <div className = 'modal__close' onClick = {hideModal}>X</div>
           </div>
-          <div className = 'end-modal__body-one'>"We are all the pieces of what we remember. We hold in ourselves the hopes and fears of those who love us. As long as there is love and memory, there is no true loss."</div>
-          <div className = 'end-modal__body-two'>{bestScore}</div>
-          <div className = 'end-modal__body-three'>This experience as well as the points are now a part of you. Do with it what you will.</div>
+          <div className = 'modal__body-one'>"We are all the pieces of what we remember. We hold in ourselves the hopes and fears of those who love us. As long as there is love and memory, there is no true loss."</div>
+          <div className = 'modal__body-two'>{bestScore}</div>
+          <div className = 'modal__body-three'>This experience as well as the points are now a part of you. Do with it what you will.</div>
         </div>
       </div>
     )
@@ -61,12 +61,12 @@ const EndModal = ({ hideModal, bestScore, isFinished }) => {
 const HelpModal = ({ hideHelpModal, isHelpClicked }) => {
   if(isHelpClicked) {
     return(
-      <div className = 'end-modal'>
-        <div className = 'end-modal__content'>
-          <div className = 'end-modal__close-wrapper'>
-            <div className = 'end-modal__close' onClick = {hideHelpModal}>X</div>
+      <div className = 'modal'>
+        <div className = 'modal__content'>
+          <div className = 'modal__close-wrapper'>
+            <div className = 'modal__close' onClick = {hideHelpModal}>X</div>
           </div>
-          <div className = 'end-modal__body-one'>Click on a card. The card should never be clicked again. See how far your memory serves you well.</div>
+          <div className = 'modal__body-one'>Click on a card. The card should never be clicked again. See how far your memory serves you well.</div>
         </div>
       </div>
     )
@@ -163,7 +163,6 @@ const App = () => {
     } else {
       incrementScore()
       updateCards(e)
-      console.log(cards)
       randomizeImages(images)
     }
   }
