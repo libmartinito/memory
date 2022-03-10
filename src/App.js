@@ -2,6 +2,38 @@ import React, { useState } from 'react'
 import './App.css'
 import { v4 as uuidv4 } from 'uuid'
 
+const Header = ({ score, bestScore }) => {
+  return(
+    <header className = 'header'>
+      <h1 className = 'header__title'>Memory</h1>
+      <div className = 'header__info'>
+        <div className = 'header__score'>
+          <p>Current Score: {score}</p>
+          <p>Best Score: {bestScore}</p>
+        </div>
+        <img src = {'./images/help.svg'} alt = 'help icon' className = 'header__help'></img>
+      </div>
+    </header>
+  )
+}
+
+const Body = ({ images, handleClick }) => {
+  return(
+    <div className = 'body'>
+      {images.map((el) =>
+        <img 
+          src = {el} 
+          key = {uuidv4()} 
+          className = 'card' 
+          name = {el.substring(9, el.length - 4)}
+          alt = {el.substring(9,el.length - 4)}
+          onClick = {handleClick}
+        ></img>  
+      )}
+    </div>
+  )
+}
+
 const EndModal = ({ hideModal, bestScore, isFinished }) => {
   if(isFinished) {
     return(
@@ -107,28 +139,14 @@ const App = () => {
 
   return(
     <div className = 'container'>
-      <header className = 'header'>
-        <h1 className = 'header__title'>Memory</h1>
-        <div className = 'header__info'>
-          <div className = 'header__score'>
-            <p>Current Score: {score}</p>
-            <p>Best Score: {bestScore}</p>
-          </div>
-          <img src = {'./images/help.svg'} alt = 'help icon' className = 'header__help'></img>
-        </div>
-      </header>
-      <div className = 'body'>
-        {images.map((el, i) =>
-          <img 
-            src = {el} 
-            key = {uuidv4()} 
-            className = 'card' 
-            name = {el.substring(9, el.length - 4)}
-            alt = {el.substring(9,el.length - 4)}
-            onClick = {handleClick}
-          ></img>  
-        )}
-      </div>
+      <Header
+        score = {score}
+        bestScore = {bestScore}
+      />
+      <Body
+        images = {images}
+        handleClick = {handleClick}
+      />
       <EndModal
         hideModal = {hideModal}
         bestScore = {bestScore}
