@@ -1,0 +1,52 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+:root {
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 4rem;
+  width: 960px;
+  height: 10vh;
+}
+
+.header__help {
+  width: 2rem;
+  height: 2rem;
+}
+
+.header__info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header__score {
+  text-align: right;
+}
+
+.body {
+  width: 960px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 90vh;
+}
+
+.card {
+  height: 22.5%;
+}
