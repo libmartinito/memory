@@ -49,4 +49,5 @@
 
 .card {
   height: 22.5%;
+  cursor: pointer;
 }

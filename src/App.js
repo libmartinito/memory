@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './App.css'
+import { v4 as uuidv4 } from 'uuid'
 
 const App = () => {
   const [score, setScore] = useState(0)
@@ -28,6 +29,52 @@ const App = () => {
     './images/judgement.svg',
     './images/the-world.svg'
   ])
+  const [cards, setCards] = useState([])
+
+  const incrementScore = () => {
+    setScore(score + 1)
+  }
+
+  const resetScore = () => {
+    setScore(0)
+  }
+
+  const updateBestScore = () => {
+    setBestScore(score)
+  }
+
+  const updateCards = (e) => {
+    const newCards = cards.concat(e.target.name)
+    setCards(newCards)
+  }
+
+  const resetCards = () => {
+    setCards([])
+  }
+
+  const randomizeImages = (arr) => {
+    const imageArr = arr
+    for(let i = imageArr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random()*(i + 1))
+      const temp = imageArr[i]
+      imageArr[i] = imageArr[j]
+      imageArr[j] = temp
+    }
+    setImages(imageArr)
+  }
+
+  const handleClick = (e) => {
+    if(cards.includes(e.target.name)) {
+      updateBestScore()
+      resetScore()
+      resetCards()
+    } else {
+      incrementScore()
+      updateCards(e)
+      console.log(cards)
+      randomizeImages(images)
+    }
+  }
 
   return(
     <div className = 'container'>
@@ -43,7 +90,14 @@ const App = () => {
       </header>
       <div className = 'body'>
         {images.map((el, i) =>
-          <img src = {el} key = {i} className = 'card' alt = {el.substring(9,el.length - 4)}></img>  
+          <img 
+            src = {el} 
+            key = {uuidv4()} 
+            className = 'card' 
+            name = {el.substring(9, el.length - 4)}
+            alt = {el.substring(9,el.length - 4)}
+            onClick = {handleClick}
+          ></img>  
         )}
       </div>
     </div>
