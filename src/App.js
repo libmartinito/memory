@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './App.css'
 import { v4 as uuidv4 } from 'uuid'
 
-const Header = ({ score, bestScore }) => {
+const Header = ({ score, bestScore, displayHelpModal }) => {
   return(
     <header className = 'header'>
       <h1 className = 'header__title'>Memory</h1>
@@ -11,7 +11,12 @@ const Header = ({ score, bestScore }) => {
           <p>Current Score: {score}</p>
           <p>Best Score: {bestScore}</p>
         </div>
-        <img src = {'./images/help.svg'} alt = 'help icon' className = 'header__help'></img>
+        <img 
+          src = {'./images/help.svg'} 
+          alt = 'help icon' 
+          className = 'header__help'
+          onClick = {displayHelpModal}
+        ></img>
       </div>
     </header>
   )
@@ -53,6 +58,23 @@ const EndModal = ({ hideModal, bestScore, isFinished }) => {
   }
 }
 
+const HelpModal = ({ hideHelpModal, isHelpClicked }) => {
+  if(isHelpClicked) {
+    return(
+      <div className = 'end-modal'>
+        <div className = 'end-modal__content'>
+          <div className = 'end-modal__close-wrapper'>
+            <div className = 'end-modal__close' onClick = {hideHelpModal}>X</div>
+          </div>
+          <div className = 'end-modal__body-one'>Click on a card. The card should never be clicked again. See how far your memory serves you well.</div>
+        </div>
+      </div>
+    )
+  } else {
+    return(null)
+  }
+}
+
 const App = () => {
   const [score, setScore] = useState(0)
   const [bestScore, setBestScore] = useState(0)
@@ -82,6 +104,7 @@ const App = () => {
   ])
   const [cards, setCards] = useState([])
   const [isFinished, setIsFinished] = useState(false)
+  const [isHelpClicked, setIsHelpClicked] = useState(false)
 
   const incrementScore = () => {
     setScore(score + 1)
@@ -110,6 +133,14 @@ const App = () => {
 
   const hideModal = () => {
     setIsFinished(false)
+  }
+
+  const displayHelpModal = () => {
+    setIsHelpClicked(true)
+  }
+
+  const hideHelpModal = () => {
+    setIsHelpClicked(false)
   }
 
   const randomizeImages = (arr) => {
@@ -142,10 +173,15 @@ const App = () => {
       <Header
         score = {score}
         bestScore = {bestScore}
+        displayHelpModal = {displayHelpModal}
       />
       <Body
         images = {images}
         handleClick = {handleClick}
+      />
+      <HelpModal
+        hideHelpModal = {hideHelpModal}
+        isHelpClicked = {isHelpClicked}
       />
       <EndModal
         hideModal = {hideModal}

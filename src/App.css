@@ -48,6 +48,10 @@
   text-align: right;
 }
 
+.header__help {
+  cursor: pointer;
+}
+
 .body {
   width: 960px;
   display: flex;
