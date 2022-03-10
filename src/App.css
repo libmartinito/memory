@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
 *{
   margin: 0;
   padding: 0;
@@ -5,7 +7,13 @@
 }
 
 :root {
+  --gray: rgba(156, 163, 175, 0.8);
+  --zinc: #3f3f46;
+  --zinc-modal: rgba(63, 63, 70, 0.9);
+  --stone: #fafaf9;
   font-size: 14px;
+  font-family: 'Space Mono', monospace;
+  color: var(--zinc);
   box-sizing: border-box;
 }
 
@@ -13,6 +21,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: var(--stone);
 }
 
 .header {
@@ -49,5 +58,47 @@
 
 .card {
   height: 22.5%;
+  cursor: pointer;
+}
+
+.end-modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.end-modal__content {
+  margin: 10% auto;
+  width: 400px;
+  height: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 0.5rem 0 var(--gray);
+  background-color: var(--zinc-modal);
+  color: var(--stone);
+}
+
+.end-modal__body-one {
+  padding-top: 1rem;
+}
+
+.end-modal__body-two {
+  font-size: 5rem;
+}
+
+.end-modal__close-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.end-modal__close {
+  font-weight: 700;
   cursor: pointer;
 }
